@@ -1,6 +1,6 @@
 # Modelling-Signify
 
-This repository contains the training, evaluation, and testing pipeline for the **HWGAT-E** model on the **INCLUDE** dataset. It is developed as part of the **Major Project** by **Group A8**.
+This repository contains the training, evaluation, and testing pipeline for the **HWGAT-E** model on the **INCLUDE** dataset. It is developed as part of the **Major Project** by **Group A8**. This project has been taken from Suvajit Patra's "SL-HWGAT" Repository
 
 ---
 
