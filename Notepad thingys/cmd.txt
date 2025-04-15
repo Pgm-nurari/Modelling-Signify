@@ -1,0 +1,31 @@
+python generate_train_csv.py
+
+C:\\sl-hwgat-main\hwgat\meta_generators>python INCLUDE_meta_gen.py
+
+python pose_feature_extract.py --root "C:\Sreelakshmi V\sl-hwgat-main\INCLUDE" --meta "C:\Sreelakshmi V\sl-hwgat-main\INCLUDE_meta\metadata.csv" --out_path "C:\Sreelakshmi V\sl-hwgat-main\mega_output" -m mediapipe
+
+Error files:
+Video_ID,Path,Error
+0000218,C:\Sreelakshmi V\sl-hwgat-main\INCLUDE\Clothes\41. Shirt\MVI_3847.MOV,Frame extraction error: [23:23:23] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:292: [23:23:23] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:159: Check failed: filter_graph_->Pop(&out_frame_p) Error fetch filtered frame.
+0000258,C:\Sreelakshmi V\sl-hwgat-main\INCLUDE\Home\37. Book\MVI_9041.MP4,Frame extraction error: [23:25:07] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:292: [23:25:06] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:159: Check failed: filter_graph_->Pop(&out_frame_p) Error fetch filtered frame.
+0000269,C:\Sreelakshmi V\sl-hwgat-main\INCLUDE\Adjectives\3. happy\MVI_5264.MOV,Frame extraction error: [23:25:29] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:292: [23:25:29] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:159: Check failed: filter_graph_->Pop(&out_frame_p) Error fetch filtered frame.
+0000283,C:\Sreelakshmi V\sl-hwgat-main\INCLUDE\Adjectives\3. happy\MVI_5343.MOV,Frame extraction error: [23:25:53] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:292: [23:25:53] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:159: Check failed: filter_graph_->Pop(&out_frame_p) Error fetch filtered frame.
+0000288,C:\Sreelakshmi V\sl-hwgat-main\INCLUDE\Adjectives\85. slow\MVI_9324.MOV,Frame extraction error: [23:26:03] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:292: [23:26:03] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:159: Check failed: filter_graph_->Pop(&out_frame_p) Error fetch filtered frame.
+0000294,C:\Sreelakshmi V\sl-hwgat-main\INCLUDE\Adjectives\85. slow\MVI_9242.MOV,Frame extraction error: [23:26:13] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:292: [23:26:13] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:159: Check failed: filter_graph_->Pop(&out_frame_p) Error fetch filtered frame.
+0000297,C:\Sreelakshmi V\sl-hwgat-main\INCLUDE\Adjectives\85. slow\MVI_9402.MOV,Frame extraction error: [23:26:17] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:292: [23:26:17] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:159: Check failed: filter_graph_->Pop(&out_frame_p) Error fetch filtered frame.
+0000298,C:\Sreelakshmi V\sl-hwgat-main\INCLUDE\Adjectives\85. slow\MVI_9403.MOV,Frame extraction error: [23:26:17] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:292: [23:26:17] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:159: Check failed: filter_graph_->Pop(&out_frame_p) Error fetch filtered frame.
+0000299,C:\Sreelakshmi V\sl-hwgat-main\INCLUDE\Adjectives\85. slow\MVI_9322.MOV,Frame extraction error: [23:26:18] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:292: [23:26:18] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:159: Check failed: filter_graph_->Pop(&out_frame_p) Error fetch filtered frame.
+0000510,C:\Sreelakshmi V\sl-hwgat-main\INCLUDE\People\67. Sister\MVI_3931.MOV,Frame extraction error: [23:35:01] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:292: [23:35:01] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:159: Check failed: filter_graph_->Pop(&out_frame_p) Error fetch filtered frame.
+0000686,C:\Sreelakshmi V\sl-hwgat-main\INCLUDE\Greetings\53. Good evening\MVI_9977.MOV,Frame extraction error: [23:41:45] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:292: [23:41:45] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:159: Check failed: filter_graph_->Pop(&out_frame_p) Error fetch filtered frame.
+0000818,C:\Sreelakshmi V\sl-hwgat-main\INCLUDE\People\80. Adult\MVI_5298.MOV,Frame extraction error: [23:47:16] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:292: [23:47:16] D:\a\decord\decord\src\video\ffmpeg\threaded_decoder.cc:159: Check failed: filter_graph_->Pop(&out_frame_p) Error fetch filtered frame.
+
+
+python data_preprocess.py --root "C:\Sreelakshmi V\sl-hwgat-main\INCLUDE" -ds INCLUDE --meta "C:\Sreelakshmi V\sl-hwgat-main\INCLUDE_meta\metadata.csv" -dr "C:\Sreelakshmi V\sl-hwgat-main\mega_output" -ft keypoints -kpm mediapipe
+
+Error files:
+2025-04-14 23:57:41,596 - ERROR - [Bad Feature] 0000270 has empty or invalid features.
+2025-04-14 23:57:47,511 - ERROR - [Bad Feature] 0000687 has empty or invalid features.
+2025-04-14 23:57:48,597 - ERROR - [Bad Feature] 0000764 has empty or invalid features.
+
+
+python main.py -m train -model HWGATE -d INCLUDE

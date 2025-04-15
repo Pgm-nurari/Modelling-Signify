@@ -1,0 +1,18 @@
+ # self.input_dir = os.path.join(os.getcwd())
+        # print("Current working directory is: f{self.input_dir}")
+        # self.class_map_path = os.path.join(self.input_dir, f"input/{self.dataset_name}/class_map_{self.dataset_name}.csv")
+        # self.vid_split_path = os.path.join(self.input_dir, f"input/{self.dataset_name}/vid_splits_{self.dataset_name}.pkl")
+        # self.vid_class_path = os.path.join(self.input_dir, f"input/{self.dataset_name}/vid_class_{self.dataset_name}.pkl")
+        # self.data_map_path = os.path.join(self.input_dir, f"input/{self.dataset_name}/data_map_{self.dataset_name}_{self.feature_type}.pkl")
+
+        self.input_dir = os.path.join(os.getcwd(), "hwgat", "input", self.dataset_name)
+        self.class_map_path = os.path.join(self.input_dir, f"class_map_{self.dataset_name}.csv")
+        self.vid_split_path = os.path.join(self.input_dir, f"vid_splits_{self.dataset_name}.pkl")
+        self.vid_class_path = os.path.join(self.input_dir, f"vid_class_{self.dataset_name}.pkl")
+        self.data_map_path = os.path.join(self.input_dir, f"data_map_{self.dataset_name}_{self.feature_type}.pkl")
+
+        # self.input_dir = os.path.join("hwgat", "input", self.dataset_name)
+        # self.class_map_path = os.path.join(self.input_dir, f"class_map_{self.dataset_name}.csv")
+        # self.vid_split_path = os.path.join(self.input_dir, f"vid_splits_{self.dataset_name}.pkl")
+        # self.vid_class_path = os.path.join(self.input_dir, f"vid_class_{self.dataset_name}.pkl")
+        # self.data_map_path = os.path.join(self.input_dir, f"data_map_{self.dataset_name}_{self.feature_type}.pkl")
