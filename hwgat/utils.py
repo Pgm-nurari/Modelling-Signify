@@ -379,4 +379,3 @@ class EarlyStopper:
             if self.counter >= self.patience:
                 return True
         return False
-    
