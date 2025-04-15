@@ -131,6 +131,3 @@ if __name__ == '__main__':
         list(tqdm(pool.imap_unordered(process_video, tasks), total=len(tasks), desc="Processing Videos"))
 
     print(f"✅ Processing complete. Any failed videos were logged at: {failed_csv_path}")
-
-
-
