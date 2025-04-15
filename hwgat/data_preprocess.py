@@ -42,23 +42,17 @@ def arg_parser():
 
 
 
-def process_row(row):
+def process_row(row, class_map_local, root_local, data_root_path_local, cfg_local, feature):
     try:
-        # print("Under try statement in Process_row function")
-        # print(row)
         vid_name = row[0]
         word = row[3].strip()
-        # print(f"{word}",end=" ")
         split = row[4].strip()
 
-        print(class_map_local)
-
         if word not in class_map_local:
-            # print("Word not in class_map_local")
             return None
 
         mapped_class = class_map_local[word]
-        print(mapped_class)
+        # print(mapped_class)
 
         result = {
             "vid_name": vid_name,
@@ -66,16 +60,16 @@ def process_row(row):
             "split": split
         }
 
+        print(result)
+
         if feature == 'keypoints':
             data_path = os.path.join(data_root_path_local, vid_name + '.pkl')
-            print(data_path)
             if not os.path.exists(data_path):
                 logging.error(f"[Missing File] {data_path} not found.")
                 return None
 
             try:
                 data = pickle.load(open(data_path, "rb"))
-                print('''data = pickle.load(open(data_path, "rb"))''')
             except Exception as e:
                 logging.error(f"[Pickle Load Error] {vid_name}:\n{traceback.format_exc()}")
                 return None
@@ -93,7 +87,6 @@ def process_row(row):
 
             result['data'] = data
         else:
-            print("Else found")
             result['data_path'] = os.path.join(root_local, row[1])
 
         return result
@@ -101,6 +94,7 @@ def process_row(row):
     except Exception as e:
         logging.error(f"[Row Error] {row}:\n{traceback.format_exc()}")
         return None
+
 
 if __name__ == "__main__":
     try:
@@ -149,9 +143,11 @@ if __name__ == "__main__":
 
         print(f"Processing {len(rows)} rows using 4 CPU cores...")
 
-        with Pool(processes=4) as pool:
-            results = list(tqdm(pool.imap(process_row, rows), total=len(rows)))
-            print("\n\n\n Results getting generated")
+        results = []
+
+        for row in tqdm(rows, desc="Processing rows"):
+            res = process_row(row, class_map, root, data_root, cfg, feature)
+            results.append(res)
 
         for res in results:
             if res is None:
@@ -163,7 +159,7 @@ if __name__ == "__main__":
             else:
                 data_info[vid_name] = res["data_path"]
             vid_splits[res["split"]].append(vid_name)
-            print(vid_splits)
+            # print(vid_splits)
 
         print(f'Unique Words: {len(class_map)}')
 
