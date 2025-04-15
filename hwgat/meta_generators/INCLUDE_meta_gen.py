@@ -34,7 +34,7 @@ if __name__ == "__main__":
         # extracting each data row one by one
         for row in csvreader:
             vid_path = os.path.normpath(os.path.join(root, row[3]))
-            print(vid_path)
+            # print(vid_path)
             try:
                 f = open(vid_path, 'r')
                 f.close()
@@ -51,7 +51,7 @@ if __name__ == "__main__":
                 except IndexError:
                     print(f"Error extracting class for: {vid_path}")
                     cls = "unknown"  # Assign a default category if extraction fails
-                print("Working boiiiiiii")
+                # print("Working boiiiiiii")
                 if cls not in vocab:
                     vocab.append(cls)
 
@@ -101,7 +101,7 @@ if __name__ == "__main__":
 
                     # Extract category name safely (if it has a dot, take the second part)
                     cls = category_part.split('.')[-1].strip().lower()
-                    print("Working Boiii 2222!!!!")
+                    # print("Working Boiii 2222!!!!")
                 except IndexError:
                     print(f"Error extracting class for: {vid_path}")
                     cls = "unknown"  # Assign a default category if extraction fails
@@ -112,6 +112,6 @@ if __name__ == "__main__":
             except:
                 continue
     
-    print(f'Data Path : {data_path},\nRows: {rows},\n\n\nVovabs: {vocab}')
+    # print(f'Data Path : {data_path},\nRows: {rows},\n\n\nVocabs: {vocab}')
 
     generate_meta(data_path, rows, vocab)
